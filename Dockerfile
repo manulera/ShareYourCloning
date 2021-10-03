@@ -31,5 +31,5 @@ RUN apt install git
 # Move to the app directory
 WORKDIR /app
 
-# Read the Piplock file
+# Rest
 

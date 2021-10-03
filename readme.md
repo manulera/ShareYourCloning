@@ -1,42 +1,10 @@
 # Readme
 
-A python api built with flask to do *in silico* cloning.
+A web application to generate molecular cloning strategies in json format, and share them with others.
 
-## How to install locally
+For information on the backend see [this](./src/backend/readme.md)
 
-### Backend flask app
-
-You should have python 3.9 installed in your machine.
-
-For the management of the dependencies I used `pipenv`, if you don't have it:
-
-```
-pip3 install pipenv
-```
-
-Then go to `src/backend/` and:
-
-```bash
-# This should install the dependencies and create a virtual environment
-pipenv install
-
-# Activate the virtual environment
-pipenv shell
-
-# Somehow, for me the module flask_cors was not properly installed by pipenv,
-# so I had to do this in the virtual environment
-pip install flask_cors
-```
-
-Now you should be able to run the backend by doing:
-```
-
-```
-
-
-
-
-
+For information on the frontend see [this](./src/frontend/readme.md)
 
 ### Build the container
 
