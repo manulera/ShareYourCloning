@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+biopython = "*"
+pydna = "*"
+flask-cors = "*"
+flask = "*"
+flake8-flask = "*"
+pep8-naming = "*"
+flake8-docstrings = "*"
+flask-restplus = "*"
+autopep8 = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
