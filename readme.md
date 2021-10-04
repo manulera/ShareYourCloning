@@ -46,31 +46,31 @@ Entities, which represent DNA molecules look like this:
 
 Sources, as described [above](#biological-background) will look like this:
 
-```json
+```javascript
 // An example of a restriction
 {
-	"kind": "source",
-	"id": "some_unique_id",
+	kind: 'source',
+	id: 'some_unique_id',
 	// There can be multiple inputs for example for an assembly of multiple fragments
-	"input": ["id_of_input_sequence"],
+	input: ['id_of_input_sequence'],
 	// There can only be one output selected
-	"output": "id_of_output_sequence",
+	output: 'id_of_output_sequence',
 	// Some methods would return more than one possible output (e.g., cutting a linear fragment of DNA into two)
 	// This specifies which of the fragments corresponds to the output
-	"output_index": some_integer
+	output_index: some_integer
 }
 
 // An example of an import from a file
 {
-	"kind": "source",
-	"id": "some_unique_id",
+	kind: 'source',
+	id: 'some_unique_id',
 	// A file import has no parent sequence
-	"input": [],
+	input: [],
 	// There can only be one output selected
-	"output": "id_of_output_sequence",
+	output: 'id_of_output_sequence',
 	// Some files, like fasta may contain multiple sequences
 	// This specifies which of the sequences corresponds to the output
-	"output_index": some_integer
+	output_index: some_integer
 }
 
 ```
