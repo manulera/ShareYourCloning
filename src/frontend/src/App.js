@@ -6,6 +6,17 @@ import SequenceEditor from './components/SequenceEditor';
 import Source from './components/sources/Source';
 import executeSourceStep from './executeSourceStep';
 
+/**
+ * Generate a list of objects, where every object has:
+ * id: the id of an entity in the 'entities' state array
+ * jsx: jsx containing a representation of each entity (in this case graphical representation)
+ *    of the DNA molecule
+ * @param {Array<entity>} entities array of entities
+ * @param {function} addSource passing down the function addSource, so that in the entities that are
+ *                        not the input of anything (at the bottom of the tree), there is a button
+ *                        to add a new source.
+ * @returns the mentioned list
+ */
 function buildElementListEntities(entities, addSource) {
   const out = [];
   entities.forEach((entity) => {
@@ -17,6 +28,15 @@ function buildElementListEntities(entities, addSource) {
   return out;
 }
 
+/**
+ * Generate a list of objects, where every object has:
+ * id: the id of an source in the 'sources' state array
+ * jsx: jsx containing a representation of each source
+ * @param {Array<source>} sources 
+ * @param {function} updateSource 
+ * @param {*} getEntityFromId 
+ * @returns 
+ */
 function buildElementListSources(sources, updateSource, getEntityFromId) {
   const out = [];
   sources.forEach((source) => {

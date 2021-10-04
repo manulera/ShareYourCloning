@@ -1,10 +1,41 @@
 # Readme
 
-A web application to generate molecular cloning strategies in json format, and share them with others.
+## About
 
-For information on the backend see [this](./src/backend/readme.md)
+ShareYourCloning is a web application to generate molecular cloning strategies in json format, and share them with others. It is the first brick in the construction of [Genestorian](https://www.genestorian.org/), a web application for model organism collections.
 
-For information on the frontend see [this](./src/frontend/readme.md)
+### Biological background
+
+Recombinant DNA technology is used in a variety of research and industry fields to generate new DNA molecules by combining fragments of existing ones. This means that every molecule in a laboratory collection was created by "cutting and pasting" the sequences of existing molecules.
+
+The aim of this application is to provide a web interface to document the generation of new DNA molecules from existing ones. You can imagine it as a family tree builder, where there are two kinds of entities:
+
+1. The DNA molecules
+2. The "sources", which are experimental steps that take 0 or more DNA molecules as an input, and generate a single output. There can be two kinds of sources:
+	1.	**Sources of sequences without a parent entity:** They represent either resources imported from a repository (e.g., a plasmid) or a naturally occurring sequence (e.g., the sequence of a gene in the reference strain). The information in the step may contain a reference to a file uploaded by the user, or an entry in a repository (identifier in Addgene or GenBank, request to a genome database, etc.). 
+	2. **Sources of sequences representing cloning steps combining existing sequences to generate new ones:** They contain references to the input and output DNA sequences, the method name (digestion, ligation, etc.) and the minimal information to do the cloning step in silico.
+
+See the figure below for an example of PCR-based gene targeting, in which a fragment of a plasmid is amplified by PCR with primers that contain 5' extensions homologous to target sequences in the genome. Cells are then transformed with the PCR fragment, which integrates into the genome through homologous recombination.
+
+![](cloning.drawio.svg)
+
+There is a mockup of an interface representing this cloning strategy [here](https://www.genestorian.org/html/web_interface/index.html)
+
+## Built with
+
+ShareYourCloning has a frontend application and backend application.
+
+### Backend
+
+The backend is a web API built with python flask. For information on what it does, and how to install it and what it does see [this](./src/backend/readme.md).
+
+### Frontend
+
+The frontend application is built with react, and it is the "family tree builder" that you will see in your browser. For more info on what it does and how to install it see [this](./src/frontend/readme.md)
+
+## Gettings started
+
+### Prerequisites
 
 ## Vscode Settings
 
