@@ -81,15 +81,19 @@ ShareYourCloning has a frontend application and backend application.
 
 ### Backend
 
-The backend is a web API built with python flask. For information on what it does, and how to install it and what it does see [this](./src/backend/readme.md).
+The code of the backend is here: [https://github.com/manulera/ShareYourCloning_backend](https://github.com/manulera/ShareYourCloning_backend)
+
+The backend is a web API built with python flask. For information on what it does, and how to install it and what it does see [this](https://github.com/manulera/ShareYourCloning_backend).
 
 ### Frontend
 
-The frontend application is built with react, and it is the "family tree builder" that you will see in your browser. For more info on what it does and how to install it see [this](./src/frontend/readme.md)
+The code of the frontend is here: [https://github.com/manulera/ShareYourCloning_frontend](https://github.com/manulera/ShareYourCloning_frontend)
+
+The frontend application is built with react, and it is the "family tree builder" that you will see in your browser. For more info on what it does and how to install it see [this](https://github.com/manulera/ShareYourCloning_frontend)
 
 ## Getting started
 
-You should install and start both the [backend](./src/backend/readme.md) and the [backend](./src/frontend/readme.md). Follow the indications and get them running. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000).
+You should install and start both the [backend](./src/backend/readme.md) and the [frontend](https://github.com/manulera/ShareYourCloning_frontend). Follow the indications of the repo and start both development servers. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000).
 
 In the browser, you should see something like this:
 
@@ -108,44 +112,6 @@ When you open your file, there should be a new node in the tree that pops up sho
 
 Below, there is a button that says `Add source`. If you click it, you can now use this sequence as the input for another source. Choose `restriction`. This will allow you to type in the name of a restriction enzyme, and will return the resulting fragments by calling the backend API endpoint `/step`. You can type `EcoRI` as an example. This will expand the current node of the tree, and will show the resulting fragment. You can move between them by using the arrows.
 
-
-
-
-## Vscode Settings
-
-If you want to have the same environment for development that I am using, you can create a folder in the main directory called `.vscode`, there you should create a file `settings.json` as below
-
-You will have to change `path/to/python/environment/bin/` by the location of the bin folder of the virtual environment created by pipenv. For that, go to `src/backend/` and run `pipenv shell` to activate the virtual environment (after you have installed the dependencies), and then run `which python`.
-
-```json
-{
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/*.pyc": true,
-        "**/__pycache__": true
-    },
-    "python.linting.enabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Path": "path/to/python/environment/bin/flake8",
-    "python.pythonPath": "path/to/python/environment/bin/python",
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
-     },
-     "eslint.nodePath": "./src/frontend/node_modules",
-     "eslint.options": { "overrideConfigFile": "./src/frontend/.eslintrc.json"},
-     "eslint.format.enable": true,
-     "[javascript]": {
-         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-     },
-     "[javascriptreact]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
-}
-```
 
 ## Molecular Biology Methods
 
