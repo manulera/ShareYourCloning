@@ -8,6 +8,8 @@ For information on the frontend see [this](./src/frontend/readme.md)
 
 ### Build the container
 
+In the `Dockerfile` you might want to change your timezone (see comments)
+
 You will have to give the container a name (I used elifesprint), and build it from the `Dockerfile`
 
 ```

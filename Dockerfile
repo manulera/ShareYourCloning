@@ -23,13 +23,22 @@ RUN apt-get install python3.9-distutils -y
 RUN apt-get install python3-pip -y
 
 # Install pipenv (package manager)
-RUN apt-get install python3-pip -y
+RUN pip3 install pipenv
 
 # Install git to download the source code
-RUN apt install git
+RUN apt install git -y
+
+# Install yarn
+RUN apt-get install yarn -y
 
 # Move to the app directory
 WORKDIR /app
 
-# Rest
+RUN git clone https://github.com/manulera/ShareYourCloning
+
+# For pipenv to work
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+
 
