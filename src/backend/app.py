@@ -1,8 +1,7 @@
 """The main application."""
 from flask import Flask, jsonify, Response, request
 from flask_cors import CORS
-from dna_functions import get_restriction_enzyme_products_list
-from dna_functions import get_n_cutters, load_dseq_from_json
+from dna_functions import get_n_cutters, load_dseq_from_json, get_restriction_enzyme_products_list, get_sequence_from_genbank
 
 
 app = Flask(__name__)
@@ -32,6 +31,8 @@ def execute_step():
     # TODO: Validation of the request data (general)
     if request_data['type'] == 'restriction':
         return get_restriction_enzyme_products_list(request_data)
+    elif request_data['type'] == 'genbank_id':
+        return get_sequence_from_genbank(request_data)
     else:
         return Response('The step is not valid', status=400)
 

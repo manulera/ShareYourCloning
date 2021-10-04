@@ -8,7 +8,7 @@ from Bio.Restriction.Restriction import CommOnly, RestrictionBatch
 from io import StringIO
 from Bio.SeqIO import read as seqio_read
 from pydna.seqfeature import SeqFeature
-
+from pydna.genbank import Genbank
 # TODO this needs some fixing
 admitted_formats = {
     'gb': 'genbank',
@@ -114,3 +114,11 @@ def get_restriction_enzyme_products_list(request_data: dict):
 
     # TODO return selected fragment if index in the output list is specified
     return jsonify({'output_list': [formatSequenceGenebank(seq) for seq in output_list]})
+
+
+def get_sequence_from_genbank(request_data: dict):
+
+    gb = Genbank("example@gmail.com")
+    seq = gb.nucleotide(request_data['genbank_id'])
+    return jsonify({'output_list': [formatSequenceGenebank(seq)]})
+
