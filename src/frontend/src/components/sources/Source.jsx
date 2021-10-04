@@ -1,5 +1,6 @@
 import React from 'react';
 import SourceFile from './SourceFile';
+import SourceGenBank from './SourceGenBank';
 import SourceRestriction from './SourceRestriction';
 
 // TODO
@@ -22,6 +23,9 @@ function Source({ source, updateSource, getEntityFromId }) {
     if (source.type === 'restriction') {
       specificSource = <SourceRestriction {...{ source, updateSource, getEntityFromId }} />;
     }
+    if (source.type === 'genbank_id') {
+      specificSource = <SourceGenBank {...{ source, updateSource, getEntityFromId }} />;
+    }
   }
   return (
     <div>
@@ -31,6 +35,7 @@ function Source({ source, updateSource, getEntityFromId }) {
           <option value=" " />
           <option value="file">file</option>
           <option value="restriction">restriction</option>
+          <option value="genbank_id">GenBank ID</option>
         </select>
       </label>
       {specificSource}

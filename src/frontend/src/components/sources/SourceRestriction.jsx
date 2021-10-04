@@ -61,6 +61,7 @@ function SourceRestriction({ source, updateSource, getEntityFromId }) {
       </form>
       <div>{waitingMessage}</div>
       {editor}
+      {/* TODO: move this to the upstream component */}
       <div>
         <button onClick={incrementSelectedOutput} type="button">{'<<'}</button>
         <button onClick={decreaseSelectedOutput} type="button">{'>>'}</button>
