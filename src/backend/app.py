@@ -1,6 +1,6 @@
 """The main application."""
 from flask import Flask, jsonify, Response, request
-from flask_cors import CORS,cross_origin
+from flask_cors import CORS
 from dna_functions import get_restriction_enzyme_products_list
 from dna_functions import get_n_cutters, load_dseq_from_json
 

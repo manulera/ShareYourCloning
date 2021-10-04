@@ -87,9 +87,29 @@ The backend is a web API built with python flask. For information on what it doe
 
 The frontend application is built with react, and it is the "family tree builder" that you will see in your browser. For more info on what it does and how to install it see [this](./src/frontend/readme.md)
 
-## Gettings started
+## Getting started
 
-You should install and start both the [backend](./src/backend/readme.md)
+You should install and start both the [backend](./src/backend/readme.md) and the [backend](./src/frontend/readme.md). Follow the indications and get them running. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000).
+
+In the browser, you should see something like this:
+
+![](starting_point.png)
+
+This is an inteface element to specify a source. You can start by selecting `file`, and this will open a box to submit a dna file. You can try with the one found in `example/short_sequence_EcoRI`. It contains a short sequence of DNA that has a restriction site for EcoRI.
+
+
+> **_NOTE:_**
+In essence, restriction enzymes are molecular machines that recognise a palindromic sequence in the DNA (sequence that reads the same backward and forward), and cut the DNA there.
+This should give you a basic understanding, but there are more nuances. Check [this section](#restriction-enzymes) for more. 
+
+When you open your file, there should be a new node in the tree that pops up showing the sequence map of the sequence that was in the file. There is just a dummy feature that I named `hello_feature`.
+
+![](second_step.png)
+
+Below, there is a button that says `Add source`. If you click it, you can now use this sequence as the input for another source. Choose `restriction`. This will allow you to type in the name of a restriction enzyme, and will return the resulting fragments by calling the backend API endpoint `/step`. You can type `EcoRI` as an example. This will expand the current node of the tree, and will show the resulting fragment. You can move between them by using the arrows.
+
+
+
 
 ## Vscode Settings
 
@@ -126,6 +146,13 @@ You will have to change `path/to/python/environment/bin/` by the location of the
     }
 }
 ```
+
+## Molecular Biology Methods
+
+A series of molecular biology methods explained for the non-biologist.
+
+### Restriction enzymes
+For more detail go to [wikipedia page](https://en.wikipedia.org/wiki/Restriction_enzyme). 
 
 ## Docker container
 
