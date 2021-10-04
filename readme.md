@@ -21,6 +21,60 @@ See the figure below for an example of PCR-based gene targeting, in which a frag
 
 There is a mockup of an interface representing this cloning strategy [here](https://www.genestorian.org/html/web_interface/index.html)
 
+### Encoding this information
+
+The idea is to eventually use [SBOL](https://sbolstandard.org/) to encode all the information, but as a first approach, I will start with json. As of now, the data looks more or less like this.
+
+Entities, which represent DNA molecules look like this:
+
+```json
+{
+	'kind': 'entity',
+	'id': 'some_unique_id',
+	// There should be eventually more ways of 	specifying the sequence
+	// for now just genbank support (a popular text-based file format
+	// to store DNA sequence and its features)
+	'sequence': 
+    {
+        'type': 'file',
+        'file_extension': 'gb',
+        'file_content': 'content_of_gb_file'
+    }
+	
+}
+```
+
+Sources, as described [above](#biological-background) will look like this:
+
+```json
+// An example of a restriction
+{
+	'kind': 'source',
+	'id': 'some_unique_id',
+	// There can be multiple inputs for example for an assembly of multiple fragments
+	'input': ['id_of_input_sequence'],
+	// There can only be one output selected
+	'output': 'id_of_output_sequence',
+	// Some methods would return more than one possible output (e.g., cutting a linear fragment of DNA into two)
+	// This specifies which of the fragments corresponds to the output
+	'output_index': some_integer
+}
+
+// An example of an import from a file
+{
+	'kind': 'source',
+	'id': 'some_unique_id',
+	// A file import has no parent sequence
+	'input': [],
+	// There can only be one output selected
+	'output': 'id_of_output_sequence',
+	// Some files, like fasta may contain multiple sequences
+	// This specifies which of the sequences corresponds to the output
+	'output_index': some_integer
+}
+
+```
+
 ## Built with
 
 ShareYourCloning has a frontend application and backend application.
@@ -35,7 +89,7 @@ The frontend application is built with react, and it is the "family tree builder
 
 ## Gettings started
 
-### Prerequisites
+You should install and start both the [backend](./src/backend/readme.md)
 
 ## Vscode Settings
 
@@ -89,5 +143,3 @@ docker build -t elifesprint .
 docker run -dit --name elifesprint elifesprint
 docker exec -it elifesprint bash
 ```
-
-## What I installed with pipenv

@@ -2,15 +2,19 @@
 
 A python api built with flask to do *in silico* cloning.
 
-## How to install locally
+The endpoints
 
-You should have python 3.9 installed in your machine.
+## Getting started
 
-For the management of the dependencies I used `pipenv`, if you don't have it:
+### Prerequisites
+
+You should have python 3.9 installed in your machine. For the management of the dependencies I used `pipenv`, if you don't have it:
 
 ```
 pip3 install pipenv
 ```
+
+### Installation
 
 Then go to `src/backend/` and:
 
