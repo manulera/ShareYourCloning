@@ -21,9 +21,6 @@ pipenv install
 # Activate the virtual environment
 pipenv shell
 
-# Somehow, for me the module flask_cors was not properly installed by pipenv,
-# so I had to do this in the virtual environment
-pip install flask_cors
 ```
 
 Now you should be able to run the api in the debug mode by doing:
