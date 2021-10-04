@@ -9,7 +9,7 @@ dseq_record = Dseqrecord('AAAGAATTCAAAA')
 
 # Within, there will be a dseq
 seq = dseq_record.seq
-print('The type  of dseqrecord.seq is', type(seq()))
+print('The type  of dseqrecord.seq is', type(seq))
 
 enz = CommOnly.format('EcoRI')
 output_list = seq.cut(enz)
@@ -28,3 +28,6 @@ print("The easiest way to see clearly how the end looks is three_prime_end()")
 # These are tuples
 print(first_fragment.three_prime_end())
 print(first_fragment.five_prime_end())
+
+print(output_list[1].three_prime_end())
+print(output_list[1].five_prime_end())

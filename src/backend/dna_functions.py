@@ -9,20 +9,42 @@ from io import StringIO
 from Bio.SeqIO import read as seqio_read
 from pydna.seqfeature import SeqFeature
 
-
+# TODO this needs some fixing
 admitted_formats = {
-    'gb': 'genbank'
+    'gb': 'genbank',
+    'biosequence/genbank': 'genbank'
 }
 
 
 def load_dseq_from_json(input: dict) -> Dseqrecord:
     if input['type'] == 'file':
-        file_extension = input['file_extension']
+        # Dirty solution for seqio annoying reader
         file_content = input['file_content']
+        splitted = file_content.split("\r\n")
+        splitted[0] = splitted[0][:67] + " 25-MAR-2021"
+        file_content = "\r\n".join(splitted)
+        file_extension = input['file_extension']
         sequence = Dseqrecord(seqio_read(StringIO(file_content),
                                          admitted_formats[file_extension]),
                               linear=True)
     return sequence
+
+
+def formatSequenceGenebank(seq: Dseqrecord) -> dict:
+    """Convert the Dseqrecord into json
+
+    Args:
+        input (Dseqrecord): [description]
+
+    Returns:
+        dict: [description]
+    """
+    return {'sequence':
+            {
+                'type': 'file',
+                'file_extension': 'gb',
+                'file_content': seq.format('genbank')
+            }}
 
 
 def get_n_cutters(input_sequence: Dseqrecord, nb_cuts: int) -> dict:
@@ -61,6 +83,7 @@ def get_restriction_enzyme_products_list(request_data: dict):
     if len(request_data['input']) != 1:
         pass
 
+    print(request_data['input'][0])
     # TODO: error if DNA format is not correct
     seq = load_dseq_from_json(request_data['input'][0])
 
@@ -72,8 +95,8 @@ def get_restriction_enzyme_products_list(request_data: dict):
         five_prime_end = fragment.seq.five_prime_end()
         if five_prime_end[0] != 'blunt':
             feature_name = 'overhang_' + five_prime_end[0]
-            start = len(fragment) - len(five_prime_end[1])
-            end = len(fragment)
+            start = 0
+            end = len(five_prime_end[1])
             fragment.features.append(SeqFeature(
                 location=FeatureLocation(start, end),
                 type="misc_feature",
@@ -82,12 +105,12 @@ def get_restriction_enzyme_products_list(request_data: dict):
         three_prime_end = fragment.seq.three_prime_end()
         if three_prime_end[0] != 'blunt':
             feature_name = 'overhang_' + three_prime_end[0]
-            start = 0
-            end = len(three_prime_end[1])
+            start = len(fragment) - len(three_prime_end[1])
+            end = len(fragment)
             fragment.features.append(SeqFeature(
                 location=FeatureLocation(start, end),
                 type="misc_feature",
                 qualifiers=OrderedDict({"label": feature_name}), strand=None))
 
     # TODO return selected fragment if index in the output list is specified
-    return jsonify({'output_list': [seq.format('genbank') for seq in output_list]})
+    return jsonify({'output_list': [formatSequenceGenebank(seq) for seq in output_list]})

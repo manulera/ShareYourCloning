@@ -1,16 +1,14 @@
 """The main application."""
 from flask import Flask, jsonify, Response, request
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 from dna_functions import get_restriction_enzyme_products_list
 from dna_functions import get_n_cutters, load_dseq_from_json
 
 
 app = Flask(__name__)
 CORS(app)
-app.config["CACHE_TYPE"] = "null"
-app.config['CORS_HEADERS'] = 'Content-Type'
-# cors = CORS(app, resources={r"/react": {"origins": "http://localhost:3000"}})
-
+# This prevents CORS error when there is an internal server error
+app.config['PROPAGATE_EXCEPTIONS'] = False
 
 @app.route('/', methods=['GET'])
 def hello_world():
@@ -26,7 +24,8 @@ def hello_world():
     })
 
 
-@app.route('/step/', methods=['POST'])
+@app.route('/step', methods=['POST'])
+# @cross_origin(origin='localhost',headers=['Content-Type','Authorization'])
 def execute_step():
 
     request_data = request.get_json()

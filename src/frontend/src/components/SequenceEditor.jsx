@@ -1,40 +1,41 @@
 import React, { useEffect } from 'react';
-import 'open-vector-editor/umd/main.css';
-import { CircularView,LinearView, updateEditor,  } from 'open-vector-editor';
-import { fastaToJson } from 'bio-parsers';
+// import 'open-vector-editor/umd/main.css';
+import { CircularView, LinearView, updateEditor } from 'open-vector-editor';
+import { convertToTeselaJson } from '../sequenceParsers';
+
 import store from '../store';
 
-function SequenceEditor({ data }) {
+function SequenceEditor({ entity, addSource }) {
+  const editorName = `editor_${entity.id}`;
   const editorProps = {
-    editorName: 'PlasmidEditor',
+    editorName,
     isFullscreen: false,
     annotationVisibility: {
       reverseSequence: false,
       cutsites: false,
     },
   };
-  const seq = fastaToJson('ACGT');
-  const editor = <LinearView {...editorProps} />;
-  updateEditor(store, 'PlasmidEditor', {
+
+  const seq = convertToTeselaJson(entity);
+  const editor = seq.circular ? <CircularView {...editorProps} /> : <LinearView {...editorProps} />;
+  updateEditor(store, editorName, {
     sequenceData: seq,
     annotationVisibility: {
       reverseSequence: false,
       cutsites: false,
     },
   });
-  if (data === true) {
-    return (
-      <div>
-        Hello
-        {console.log('This one', store)}
-        {editor}
-      </div>
-    );
-  }
+
+  const onClick = () => { addSource(entity); };
 
   return (
-    <div />
+    <div>
+      {editor}
+      <button type="button" onClick={onClick}>
+        Add source
+      </button>
+
+    </div>
   );
 }
-
 export default SequenceEditor;
