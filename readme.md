@@ -21,6 +21,12 @@ See the figure below for an example of PCR-based gene targeting, in which a frag
 
 There is a mockup of an interface representing this cloning strategy [here](https://www.genestorian.org/html/web_interface/index.html)
 
+### Workflow of the application
+
+The application frontend provides an interface where the user can specify a source (with or without sequence inputs). This source is sent to the backend in a `POST` request, where the step encoded in the source is executed, and the output sequence is returned and displayed in the frontend.
+
+Then the user can use the output sequence as an input for a new source, and so on.
+
 ### Encoding this information
 
 The idea is to eventually use [SBOL](https://sbolstandard.org/) to encode all the information, but as a first approach, I will start with json. As of now, the data looks more or less like this.
@@ -51,8 +57,11 @@ Sources, as described [above](#biological-background) will look like this:
 {
 	kind: 'source',
 	id: 'some_unique_id',
+	type: 'restriction',
 	// There can be multiple inputs for example for an assembly of multiple fragments
 	input: ['id_of_input_sequence'],
+	// We could specify multiple enzymes
+	restriction_enzymes: ['EcoRI'],
 	// There can only be one output selected
 	output: 'id_of_output_sequence',
 	// Some methods would return more than one possible output (e.g., cutting a linear fragment of DNA into two)
@@ -60,11 +69,14 @@ Sources, as described [above](#biological-background) will look like this:
 	output_index: some_integer
 }
 
-// An example of an import from a file
+// An example of an import from GenBank
 {
 	kind: 'source',
 	id: 'some_unique_id',
-	// A file import has no parent sequence
+	type: "genbank_id",
+ 	kind: "source",
+	genbank_id: "NM_001018957.2"
+	// A GenBank import has no parent sequence
 	input: [],
 	// There can only be one output selected
 	output: 'id_of_output_sequence',
