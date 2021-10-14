@@ -8,7 +8,7 @@ ShareYourCloning is a web application to generate molecular cloning strategies i
 
 Recombinant DNA technology is used in a variety of research and industry fields to generate new DNA molecules by combining fragments of existing ones. This means that every molecule in a laboratory collection was created by "cutting and pasting" the sequences of existing molecules.
 
-The aim of this application is to provide a web interface to document the generation of new DNA molecules from existing ones. You can imagine it as a family tree builder, where there are two kinds of entities:
+The aim of this application is to provide a web interface to document the generation of new DNA molecules from existing ones, and to export this information to share it with others. You can imagine it as a family tree builder, where there are two kinds of entities:
 
 1. The DNA molecules
 2. The "sources", which are experimental steps that take 0 or more DNA molecules as an input, and generate a single output. There can be two kinds of sources:
@@ -93,24 +93,25 @@ The frontend application is built with react, and it is the "family tree builder
 
 ## Getting started
 
-You should install and start both the [backend](./src/backend/readme.md) and the [frontend](https://github.com/manulera/ShareYourCloning_frontend). Follow the indications of the repo and start both development servers. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000).
+You should install and start both the [backend](./src/backend/readme.md) and the [frontend](https://github.com/manulera/ShareYourCloning_frontend). Follow the indications of each repo and start both development servers. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000)).
 
 In the browser, you should see something like this:
 
 ![](starting_point.png)
 
-This is an inteface element to specify a source. You can start by selecting `file`, and this will open a box to submit a dna file. You can try with the one found in `example/short_sequence_EcoRI`. It contains a short sequence of DNA that has a restriction site for EcoRI.
+This is an inteface element to specify a source. You can start by selecting `GenBank ID`, and this will open an input text field where you can type the GenBank id of a gene, for example `NM_001018957.2` for _S. pombe_ ase1 gene. When you click submit, a child element will appear, representing the sequence corresponding to the GenBank id you just typed.
 
+
+![](second_step.png)
+
+If you click on the checkbox that says `Show sequence on main editor`, the sequence will be displayed in the editor at the bottom of the page, and you can see more details.
+
+
+Now we can perform molecular cloning steps on this sequence. Below, there is a button that says `Add source`. If you click it, you can now use this sequence as the input for another source. Choose `Restriction`. This will allow you to type in the name of a restriction enzyme, and will return the resulting fragments by calling the backend API endpoint `/step`. You can type `EcoRI` as an example. This will expand the current node of the tree, and will show the resulting fragments. You can move between them by using the arrows. When you see the fragment you want click choose fragment, and this will pop the resulting sequence.
 
 > **_NOTE:_**
 In essence, restriction enzymes are molecular machines that recognise a palindromic sequence in the DNA (sequence that reads the same backward and forward), and cut the DNA there.
 This should give you a basic understanding, but there are more nuances. Check [this section](#restriction-enzymes) for more. 
-
-When you open your file, there should be a new node in the tree that pops up showing the sequence map of the sequence that was in the file. There is just a dummy feature that I named `hello_feature`.
-
-![](second_step.png)
-
-Below, there is a button that says `Add source`. If you click it, you can now use this sequence as the input for another source. Choose `restriction`. This will allow you to type in the name of a restriction enzyme, and will return the resulting fragments by calling the backend API endpoint `/step`. You can type `EcoRI` as an example. This will expand the current node of the tree, and will show the resulting fragment. You can move between them by using the arrows.
 
 
 ## Molecular Biology Methods
