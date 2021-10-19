@@ -21,12 +21,6 @@ See the figure below for an example of PCR-based gene targeting, in which a frag
 
 There is a mockup of an interface representing this cloning strategy [here](https://www.genestorian.org/html/web_interface/index.html)
 
-### Workflow of the application
-
-The application frontend provides an interface where the user can specify a source (with or without sequence inputs). This source is sent to the backend in a `POST` request, where the step encoded in the source is executed, and the output sequence is returned and displayed in the frontend.
-
-Then the user can use the output sequence as an input for a new source, and so on.
-
 ### Encoding this information
 
 The idea is to eventually use [SBOL](https://sbolstandard.org/) to encode all the information, but as a first approach, I will start with json. As of now, the data looks more or less like this.
@@ -86,6 +80,12 @@ Sources, as described [above](#biological-background) will look like this:
 }
 
 ```
+
+### Workflow of the user experience
+
+From the json above, you can see the modular nature of the task. Every sequence comes from a source, and every sequence can be the input of another source.
+
+The application frontend provides an interface where the user can specify a source (with or without sequence inputs). This source is sent to the backend in a `POST` request, where the step encoded in the source is executed, and the output sequence is returned and displayed in the frontend. When multiple outputs could come out of a source (for example, a restriction enzyme digestion), the user can select which one of them is the desired output. Then the user can use the output sequence as an input for a new source, and so on.
 
 ## Built with
 
