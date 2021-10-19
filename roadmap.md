@@ -25,7 +25,7 @@ Having potential contributors or users being able to try the app in their browse
 
 💻 **As a developer**, if you can suggest a resource (blog post or so) on how to deploy a site with a frontend in React and/or Flask, you can create a github issue, and drop it there. It will be very much appreciated!
 
-## Define the backbone of a source as json and in the frontend interface + documentation (before February 2021)
+## Define the backbone of a source as json and in the frontend interface + documentation (before February 2022)
 
 The modularity of the web app relies on the fact that every json object representing a source of DNA has always three fields:
 
