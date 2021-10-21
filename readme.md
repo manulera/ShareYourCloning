@@ -27,18 +27,18 @@ The idea is to eventually use [SBOL](https://sbolstandard.org/) to encode all th
 
 Entities, which represent DNA molecules look like this:
 
-```json
+```javascript
 {
-	"kind": "entity",
-	"id": "some_unique_id",
+	kind: 'entity',
+	id: 'some_unique_id',
 	// There should be eventually more ways of 	specifying the sequence
 	// for now just genbank support (a popular text-based file format
 	// to store DNA sequence and its features)
-	"sequence":
+	sequence:
     {
-        "type": "file",
-        "file_extension": "gb",
-        "file_content": "content_of_gb_file"
+        type: 'file',
+        file_extension: 'gb',
+        file_content: 'content_of_gb_file'
     }
 
 }
