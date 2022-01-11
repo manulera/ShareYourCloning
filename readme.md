@@ -1,8 +1,26 @@
 # Readme
 
-## About
+## Intro
 
 ShareYourCloning is a web application to generate molecular cloning strategies in json format, and share them with others. It is the first brick in the construction of [Genestorian](https://www.genestorian.org/), a web application for model organism collections.
+
+
+## :timer_clock: Getting started in 5 minutes
+
+
+If you just want to try the application, the easiest way is to go to the hosted version at: [https://shareyourcloning.netlify.app/](https://shareyourcloning.netlify.app/).
+
+If you want to quickly set up a local instance of the application using docker, you can use the images of backend and frontend hosted in docker hub:
+
+```bash
+# see docke-compose.yml
+docker-compose pull
+docker-compose up
+```
+
+Then, the application should be running at [http://localhost:3000](http://localhost:3000).
+
+## About
 
 ### Biological background
 
@@ -12,7 +30,7 @@ The aim of this application is to provide a web interface to document the genera
 
 1. The DNA molecules
 2. The "sources", which are experimental steps that take 0 or more DNA molecules as an input, and generate a single output. There can be two kinds of sources:
-	1.	**Sources of sequences without a parent entity:** They represent either resources imported from a repository (e.g., a plasmid) or a naturally occurring sequence (e.g., the sequence of a gene in the reference strain). The information in the step may contain a reference to a file uploaded by the user, or an entry in a repository (identifier in Addgene or GenBank, request to a genome database, etc.). 
+	1.	**Sources of sequences without a parent entity:** They represent either resources imported from a repository (e.g., a plasmid) or a naturally occurring sequence (e.g., the sequence of a gene in the reference strain). The information in the step may contain a reference to a file uploaded by the user, or an entry in a repository (identifier in Addgene or GenBank, request to a genome database, etc.).
 	2. **Sources of sequences representing cloning steps combining existing sequences to generate new ones:** They contain references to the input and output DNA sequences, the method name (digestion, ligation, etc.) and the minimal information to do the cloning step in silico.
 
 See the figure below for an example of PCR-based gene targeting, in which a fragment of a plasmid is amplified by PCR with primers that contain 5' extensions homologous to target sequences in the genome. Cells are then transformed with the PCR fragment, which integrates into the genome through homologous recombination.
@@ -103,7 +121,7 @@ The code of the frontend is here: [https://github.com/manulera/ShareYourCloning_
 
 The frontend application is built with react, and it is the "family tree builder" that you will see in your browser. For more info on what it does and how to install it see [this](https://github.com/manulera/ShareYourCloning_frontend)
 
-## Getting started
+### Local installation
 
 You should install and start both the [backend](./src/backend/readme.md) and the [frontend](https://github.com/manulera/ShareYourCloning_frontend). Follow the indications of each repo and start both development servers. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000)).
 
