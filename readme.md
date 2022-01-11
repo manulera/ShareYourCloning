@@ -22,7 +22,7 @@ Then, the application should be running at [http://localhost:3000](http://localh
 
 ## About
 
-### Biological background
+### :dna: Biological background 
 
 Recombinant DNA technology is used in a variety of research and industry fields to generate new DNA molecules by combining fragments of existing ones. This means that every molecule in a laboratory collection was created by "cutting and pasting" the sequences of existing molecules.
 
@@ -123,7 +123,7 @@ The frontend application is built with react, and it is the "family tree builder
 
 ### Local installation
 
-You should install and start both the [backend](./src/backend/readme.md) and the [frontend](https://github.com/manulera/ShareYourCloning_frontend). Follow the indications of each repo and start both development servers. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000)).
+You should install and start both the [backend](https://github.com/manulera/ShareYourCloning_backend) and the [frontend](https://github.com/manulera/ShareYourCloning_frontend). Follow the indications of each repo and start both development servers. Now in your browser you can go to the url of the frontend development server (by default [http://localhost:3000](http://localhost:3000)).
 
 In the browser, you should see something like this:
 
@@ -141,8 +141,7 @@ Now we can perform molecular cloning steps on this sequence. Below, there is a b
 
 > **_NOTE:_**
 In essence, restriction enzymes are molecular machines that recognise a palindromic sequence in the DNA (sequence that reads the same backward and forward), and cut the DNA there.
-This should give you a basic understanding, but there are more nuances. Check [this section](#restriction-enzymes) for more. 
-
+This should give you a basic understanding, but there are more nuances. Check [this section](#restriction-enzymes) for more.
 
 ## Molecular Biology Methods
 
