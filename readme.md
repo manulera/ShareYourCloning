@@ -19,6 +19,10 @@ docker-compose up
 
 Then, the application should be running at [http://localhost:3000](http://localhost:3000).
 
+## Contributing
+
+If you are interested in contributing, check the [contribution guidelines](CONTRIBUTING.md).
+
 ## Built with 🔨
 
 ShareYourCloning has a frontend application and backend application.
@@ -153,3 +157,13 @@ A series of molecular biology methods explained for the non-biologist.
 
 ### Restriction enzymes
 For more detail go to [wikipedia page](https://en.wikipedia.org/wiki/Restriction_enzyme).
+
+## Acknowledgements :pray:
+
+Thanks to [@ikayz](https://github.com/ikayz) for initial improvements to the frontend.
+
+Thanks to [@joyceykao](https://github.com/joyceykao) for discussions on how to approach UI/UX and users interview.
+
+Thanks to [@maratumba](https://github.com/maratumba) for recommending the usage of FastAPI and for giving some general guidelines for the development of the backend and hosting.
+
+Thanks to the whole [Open Life Science](https://openlifesci.org/) organising team and community, which were incredibly helpful in setting the foundations of this project. Special thanks to [@DimmestP](https://github.com/DimmestP), who mentored [@manulera](https://github.com/DimmestP) during the program [OLS-4](https://openlifesci.org/ols-4).
