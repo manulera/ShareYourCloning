@@ -31,7 +31,7 @@ ShareYourCloning has a frontend application and backend application.
 
 The code of the backend is here: [https://github.com/manulera/ShareYourCloning_backend](https://github.com/manulera/ShareYourCloning_backend)
 
-The backend is a web API built with FastAPI flask. For information on what it does, and how to install it and what it does see [this](https://github.com/manulera/ShareYourCloning_backend).
+The backend is a web API built with FastAPI. For information on what it does, and how to install it and what it does see [this](https://github.com/manulera/ShareYourCloning_backend).
 
 ### Frontend
 
