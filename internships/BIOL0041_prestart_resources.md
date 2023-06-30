@@ -92,3 +92,7 @@ This might be a bit advanced for the first steps, so probably you will be instal
 The framework I use in the project is [FastAPI](https://fastapi.tiangolo.com/). It makes API development much easier. Here is a video that looked like it covered all important aspects, but feel free to use another one!
 
 https://www.youtube.com/watch?v=GN6ICac3OXY&ab_channel=Amigoscode
+
+The request to NCBI to get the genbank file can be a bit tricky to figure out, but check this guide "Examples" section:
+
+https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch
