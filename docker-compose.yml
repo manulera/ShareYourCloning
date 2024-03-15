@@ -1,10 +1,10 @@
 services:
   frontend:
-    image: 'manulera/shareyourcloningfrontend'
+    image: manulera/shareyourcloningfrontend
     ports:
       - '3000:3000'
 
-  api:
-      image: manulera/shareyourcloningapi
+  backend:
+      image: manulera/shareyourcloningbackend
       ports:
-        - '8000:80'
+        - '8000:8000'
