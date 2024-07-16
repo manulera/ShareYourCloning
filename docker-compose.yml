@@ -1,10 +1,30 @@
 services:
-  frontend:
-    image: manulera/shareyourcloningfrontend
+  reverse-proxy:
+    # The official v3 Traefik docker image
+    image: traefik:v3.1
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker --entrypoints.web.address=:3000
     ports:
-      - '3000:3000'
+      # The HTTP port
+      - "3000:3000"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+  frontend:
+    # Frontend image
+    image: manulera/shareyourcloningfrontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=PathPrefix(`/`) && !PathPrefix(`/api`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
 
   backend:
-      image: manulera/shareyourcloningbackend
-      ports:
-        - '8000:8000'
+    image: manulera/shareyourcloningbackend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.backend.entrypoints=web"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
