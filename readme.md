@@ -15,11 +15,10 @@ If you want to quickly set up a local instance of the application using docker, 
 
 ```bash
 # see docker-compose.yml
-docker-compose pull
 docker-compose up
 ```
 
-Then, the application should be running at [http://localhost:3000](http://localhost:3000).
+Then, the application should be running at [http://localhost:8000](http://localhost:8000).
 
 ## Contributing
 
