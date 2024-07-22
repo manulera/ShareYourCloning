@@ -14,4 +14,6 @@ services:
 
     # environment:
     # If you want to allow other origins via CORS (comma separated)
+    # IMPORTANT: Do not add a trailing slash to the URLs:
+    #   > Do not use http://localhost:3000/, but http://localhost:3000
     # - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
