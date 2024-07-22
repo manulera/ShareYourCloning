@@ -6,6 +6,12 @@ services:
     image: shareyourcloning
     ports:
       - "8000:8000"
-    volumes:
-      #config.json maps in this directory maps to /frontend/config.json
-      - ./config.json:/home/backend/frontend/config.json
+
+    # volumes:
+    #   #config.json maps in this directory maps to /frontend/config.json
+    #   # use this for further configuration
+    #   - ./config.json:/home/backend/frontend/config.json
+
+    # environment:
+    # If you want to allow other origins via CORS (comma separated)
+    # - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
