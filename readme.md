@@ -34,6 +34,17 @@ docker pull manulera/shareyourcloning
 docker run -p 8000:8000 manulera/shareyourcloning
 ```
 
+### Running an instance in GitHub Codespaces
+
+* Click the menu at the top left of the github website, then click codespaces
+* On the top-right click on `New codespace`
+* On `Repository` select `manulera/ShareYourCloning`
+* Click on `Create codespace`
+* In the terminal enter `docker-compose up`
+* Once complete a popup will appear saying port 8000 is now available, click `Open in Browser` to navigate to your own version of the ShareYourCloning app
+* Optional: To share with other users, navigate to the ports tab of the github codespace and right click and change port visibility to public
+
+
 ## Running it yourself and configuration
 
 If you want to run a dev server locally, or run the site without using docker, you can see how to set up the backend and frontend in their respective repositories:
