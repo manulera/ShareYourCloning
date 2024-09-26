@@ -1,6 +1,6 @@
-FROM manulera/shareyourcloningfrontend as frontend
+FROM manulera/shareyourcloningfrontend AS frontend
 
-FROM manulera/shareyourcloningbackend as backend
+FROM manulera/shareyourcloningbackend AS backend
 WORKDIR /home/backend
 COPY --from=frontend /build ./frontend
 COPY ./config.json ./frontend/config.json
