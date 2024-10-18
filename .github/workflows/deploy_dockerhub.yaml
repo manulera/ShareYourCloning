@@ -33,9 +33,19 @@ jobs:
           images: manulera/shareyourcloning
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: manulera/shareyourcloning:latest
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6.9.0
+        with:
+          context: .
+          push: true
+          tags: manulera/shareyourcloning:syc-base
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            FRONTEND_TAG=syc-base

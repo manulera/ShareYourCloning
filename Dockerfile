@@ -1,4 +1,6 @@
-FROM manulera/shareyourcloningfrontend AS frontend
+ARG FRONTEND_TAG="latest"
+
+FROM manulera/shareyourcloningfrontend:${FRONTEND_TAG} AS frontend
 
 FROM manulera/shareyourcloningbackend AS backend
 WORKDIR /home/backend
