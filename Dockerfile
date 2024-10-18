@@ -10,4 +10,4 @@ ENV SERVE_FRONTEND=1
 
 ENV ROOT_PATH=""
 # Only add --root-path if ROOT_PATH is not empty, otherwise uvicorn will throw an error
-CMD uvicorn main:app --host 0.0.0.0 --port 8000 ${ROOT_PATH:+--root-path ${ROOT_PATH}}
+CMD echo "ROOT_PATH: ${ROOT_PATH}" && uvicorn main:app --host 0.0.0.0 --port 8000 ${ROOT_PATH:+--root-path ${ROOT_PATH}}
