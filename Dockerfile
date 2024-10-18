@@ -8,4 +8,6 @@ COPY --from=frontend /build ./frontend
 COPY ./config.json ./frontend/config.json
 ENV SERVE_FRONTEND=1
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV ROOT_PATH=""
+# Only add --root-path if ROOT_PATH is not empty, otherwise uvicorn will throw an error
+CMD uvicorn main:app --host 0.0.0.0 --port 8000 ${ROOT_PATH:+--root-path ${ROOT_PATH}}
