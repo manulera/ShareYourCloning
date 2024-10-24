@@ -30,7 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ""
+          tag_name: "next"
           release_name: "Draft Release"
           body: |
             This release includes:
