@@ -1,8 +1,9 @@
-ARG FRONTEND_TAG="latest"
+ARG FRONTEND_TAG="prod"
+ARG BACKEND_TAG="prod"
 
 FROM manulera/shareyourcloningfrontend:${FRONTEND_TAG} AS frontend
 
-FROM manulera/shareyourcloningbackend AS backend
+FROM manulera/shareyourcloningbackend:${BACKEND_TAG} AS backend
 WORKDIR /home/backend
 COPY --from=frontend /build ./frontend
 COPY ./docker_entrypoint.sh ./

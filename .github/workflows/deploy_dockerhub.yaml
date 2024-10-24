@@ -1,18 +1,13 @@
-name: Deploy to Docker Hub
+name: Post release
 on:
+  release:
+    types: [published]
   workflow_dispatch:
-
-# Avoid running multiple jobs for the same branch
-# in case of updates.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  # Update docker image when committing to prod branch if tests pass
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
@@ -32,20 +27,46 @@ jobs:
         with:
           images: manulera/shareyourcloning
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: manulera/shareyourcloning:latest
-          labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Build and push Docker image
+      - name: Build and push Docker image (release)
+        if: github.event_name == 'release'
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
           push: true
-          tags: manulera/shareyourcloning:syc-base
+          tags: |
+            manulera/shareyourcloning:prod
+            manulera/shareyourcloning:${{ github.ref_name }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Docker image (release-syc)
+        if: github.event_name == 'release'
+        uses: docker/build-push-action@v6.9.0
+        with:
+          context: .
+          push: true
+          tags: |
+            manulera/shareyourcloning:prod-syc-base
+            manulera/shareyourcloning:${{ github.ref_name }}-syc-base
+
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             FRONTEND_TAG=syc-base
+
+      - name: Build and push Docker image (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: docker/build-push-action@v6.9.0
+        with:
+          context: .
+          push: true
+          tags: |
+            manulera/shareyourcloning:latest
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Docker image (workflow_dispatch-syc)
+        if: github.event_name == 'workflow_dispatch'
+        uses: docker/build-push-action@v6.9.0
+        with:
+          context: .
+          push: true
+          tags: |
+            manulera/shareyourcloning:latest-syc-base

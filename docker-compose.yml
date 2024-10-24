@@ -3,7 +3,7 @@ version: "3"
 services:
   shareyourcloning:
     build: .
-    image: manulera/shareyourcloning
+    image: shareyourcloning
     # For eLabFTW
     # image: manulera/shareyourcloning:syc-base
     ports:
