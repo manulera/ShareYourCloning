@@ -3,25 +3,26 @@ version: "3"
 services:
   shareyourcloning:
     build: .
-    image: manulera/shareyourcloning:latest
+    image: shareyourcloning
     # For eLabFTW
     # image: manulera/shareyourcloning:syc-base
     ports:
       - "8000:8000"
 
-    # volumes:
-    #   #config.json maps in this directory maps to /frontend/config.json
-    #   # use this for further configuration
-    #   - ./config.json:/home/backend/frontend/config.json
-
-    # environment:
-    # If you want to allow other origins via CORS (comma separated)
-    # IMPORTANT: Do not add a trailing slash to the URLs:
-    #   > Do not use http://localhost:3000/, but http://localhost:3000
-    #   - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
-    #
-    # If you want to use a subpath of the domain, set ROOT_PATH,
-    # this is the equivalent of --root-path in uvicorn, so the routes
-    # without this prefix will also work (e.g. / will be the same as /syc/).
-    # IMPORTANT: Do not add trailing slash, and don't use quotes.
-    #  - ROOT_PATH=/syc
+    environment:
+      # If you want to allow other origins via CORS (comma separated)
+      # IMPORTANT: Do not add a trailing slash to the URLs:
+      #   > Do not use http://localhost:3000/, but http://localhost:3000
+      #   - ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001
+      #
+      # If you want to use a subpath of the domain, set ROOT_PATH,
+      # this is the equivalent of --root-path in uvicorn, so the routes
+      # without this prefix will also work (e.g. / will be the same as /syc/).
+      # IMPORTANT: Do not add trailing slash, and don't use quotes.
+      - ROOT_PATH=/syc
+      #
+      # If you want to use a different backend URL, set BACKEND_URL,
+      # this is the equivalent of --root-path in uvicorn, so the routes
+      # without this prefix will also work (e.g. / will be the same as /syc/).
+      # IMPORTANT: Do not add trailing slash, and don't use quotes.
+      - BACKEND_URL=/syc/
