@@ -34,6 +34,7 @@ jobs:
           context: .
           push: true
           tags: |
+            manulera/shareyourcloning:latest
             manulera/shareyourcloning:prod
             manulera/shareyourcloning:${{ github.ref_name }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -45,6 +46,7 @@ jobs:
           context: .
           push: true
           tags: |
+            manulera/shareyourcloning:latest-syc-base
             manulera/shareyourcloning:prod-syc-base
             manulera/shareyourcloning:${{ github.ref_name }}-syc-base
 
