@@ -46,13 +46,12 @@ jobs:
           context: .
           push: true
           tags: |
-            manulera/shareyourcloning:latest-syc-base
             manulera/shareyourcloning:prod-syc-base
             manulera/shareyourcloning:${{ github.ref_name }}-syc-base
 
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            FRONTEND_TAG=syc-base
+            FRONTEND_TAG=prod-syc-base
 
       - name: Build and push Docker image (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
@@ -72,3 +71,5 @@ jobs:
           push: true
           tags: |
             manulera/shareyourcloning:latest-syc-base
+          build-args: |
+            FRONTEND_TAG=latest-syc-base
