@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
 
-    # environment:
+    environment:
     #
     #   If you want to allow other origins via CORS (comma separated)
     #   IMPORTANT: Do not add a trailing slash to the URLs:
@@ -24,3 +24,8 @@ services:
     #
     #   Set this if you are not using "/" as rooth path. Note the trailing slash.
     # - BACKEND_URL=/shareyourcloning/
+    #   Set this if you want to use plannotate
+      - PLANNOTATE_URL=http://plannotate:8000
+
+  plannotate:
+    image: manulera/plannotate-api
