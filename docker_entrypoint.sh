@@ -12,4 +12,4 @@ echo "------------------------------------"
 cd ..
 
 # Only add --root-path if ROOT_PATH is not empty, otherwise uvicorn will throw an error
-uvicorn main:app --host 0.0.0.0 --port 8000 ${ROOT_PATH:+--root-path ${ROOT_PATH}}
+uvicorn shareyourcloning.main:app --host 0.0.0.0 --port 8000 ${ROOT_PATH:+--root-path ${ROOT_PATH}}
